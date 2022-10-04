@@ -16,6 +16,13 @@ public class MakeRequest {
                 .build();
     }
 
+    public MakeRequest(String url) {
+        this.request = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .method("GET", HttpRequest.BodyPublishers.noBody())
+                .build();
+    }
+
     HttpResponse<String> executeRequest() {
         try {
             this.response = HttpClient.newHttpClient().send(this.request, HttpResponse.BodyHandlers.ofString());
@@ -25,6 +32,10 @@ public class MakeRequest {
             throw new RuntimeException(e);
         }
         return this.response;
+    }
+
+    String getRequest() {
+        return this.request.toString();
     }
 
     String getStringResponse() {
