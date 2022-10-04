@@ -4,10 +4,10 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-public class GetUserRequest {
+public class MakeRequest {
     HttpResponse<String> response;
     HttpRequest request;
-    public GetUserRequest(String url, String x_rapid_api_key, String x_rapid_api_host) {
+    public MakeRequest(String url, String x_rapid_api_key, String x_rapid_api_host) {
         this.request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
                 .header("X-RapidAPI-Key", x_rapid_api_key)
