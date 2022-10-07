@@ -3,6 +3,8 @@ import java.util.ArrayList;
 public class Concurrent {
     static void executarConcorrente(int n) {
         ArrayList<ConcurrentThread> threadsArray = new ArrayList<ConcurrentThread>();
+        long initialTime = System.currentTimeMillis();
+
         for(int i = 0;i < n;i++) {
             ConcurrentThread ct = new ConcurrentThread("t"+i);
             threadsArray.add(ct);
@@ -16,9 +18,13 @@ public class Concurrent {
                 throw new RuntimeException(e);
             }
         }
+
+        long finalTime = System.currentTimeMillis();
+
+        System.out.println( "Runtime (ms): " + (finalTime - initialTime) + "ms" );
     }
 
     public static void main(String[] args) {
-        executarConcorrente(700);
+        executarConcorrente(40);
     }
 }
